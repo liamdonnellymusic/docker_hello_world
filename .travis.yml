@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t liamdonnellynyc/docker_hello_world -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true liamdonnellynyc/docker_hello_world npm run test
